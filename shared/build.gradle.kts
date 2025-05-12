@@ -59,11 +59,11 @@ kotlin {
                 implementation(libs.lifecycle.common)
                 implementation(libs.lifecycle.runtime)
                 implementation(libs.lifecycle.viewmodel)
-                implementation(libs.lifecycle.viewmodel.savedstate)
 
                 implementation(libs.kotlinx.datetime)
 
                 implementation(libs.material3.common)
+                implementation(libs.material.icon)
                 implementation(libs.kotlinx.serialization.json)
             }
         }

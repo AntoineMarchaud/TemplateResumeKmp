@@ -15,8 +15,8 @@ koin_version = "4.0.4"
 
 # Compose
 activity_compose = "1.10.1"
-compose_multiplatform_plugin_version = "1.7.3"
-navigationCompose = "2.8.0-alpha10"
+compose_multiplatform_plugin_version = "1.8.0"
+navigationCompose = "2.9.0-beta01"
 
 # Navigation
 lifecycle_version = "2.9.0"
@@ -24,7 +24,8 @@ lifecycle_version = "2.9.0"
 # Others
 coil = "3.1.0"
 statelyCommon = "2.0.6"
-material3Android = "1.7.3"
+material3Android = "1.8.0"
+materialIcon = "1.7.3"
 
 [plugins]
 
@@ -61,7 +62,6 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle_version" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycle_version" }
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle_version" }
-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle_version" }
 
 # je ne sais pas a quoi ça sert mais ios compile pas sans
 stately-iso-collection = { module = "co.touchlab:stately-iso-collections", version.ref = "statelyCommon" }
@@ -72,3 +72,4 @@ coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 material3-common = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3Android" }
+material-icon = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "materialIcon" }
