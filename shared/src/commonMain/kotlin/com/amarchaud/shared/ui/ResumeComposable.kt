@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -44,6 +45,8 @@ import com.amarchaud.shared.ui.models.contactModelMock
 import com.amarchaud.shared.ui.models.experienceModelMock
 import com.amarchaud.shared.ui.theme.TemplateResumeKmpTheme
 import com.amarchaud.templateresume.composables.ElegantNavigationBar
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
@@ -56,7 +59,8 @@ val NavigationBarHeight = 128.dp
 
 @Composable
 fun ResumeComposable(
-    jsonFileReader: JsonFileReader = koinInject()
+    jsonFileReader: JsonFileReader = koinInject(),
+    dynamicColor: StoreDynamicColor = koinInject(),
 ) {
     val resumeModel = remember {
         jsonFileReader.loadJsonFile("resume_template.json")!!.let {
@@ -64,15 +68,17 @@ fun ResumeComposable(
         }
     }
 
-
-    Resume(resumeModel = resumeModel)
+    Resume(
+        resumeModel = resumeModel,
+        dynamicColor = dynamicColor
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Resume(
-    dynamicColor: StoreDynamicColor = koinInject(),
-    resumeModel: ResumeModel
+    resumeModel: ResumeModel,
+    dynamicColor: StoreDynamicColor
 ) {
     var selectedSection by remember { mutableStateOf(ResumeSection.EXPERIENCE) }
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
@@ -119,7 +125,7 @@ private fun Resume(
 
 
                         if (dynamicColor.hasMaterialYou()) {
-                            Column (
+                            Column(
                                 modifier = Modifier
                                     .scale(
                                         scale = 1f.times(scrollBehavior.state.collapsedFraction.let { 1 - it })
@@ -144,7 +150,7 @@ private fun Resume(
                                 val checked = dynamicColor.currentMaterialYouDisplay.collectAsState().value
                                 Checkbox(
                                     modifier = Modifier.size(24.dp),
-                                        checked = checked,
+                                    checked = checked,
                                     onCheckedChange = {
                                         dynamicColor.updateMaterialYouColor(!checked)
                                     }
@@ -201,7 +207,23 @@ private fun Resume(
 @Preview
 @Composable
 private fun ResumeAppPreview() {
-    TemplateResumeKmpTheme {
+
+    val dynamicColor = object : StoreDynamicColor {
+        override fun hasMaterialYou(): Boolean {
+            return false
+        }
+
+        override fun updateMaterialYouColor(b: Boolean) {
+        }
+
+        override fun getDynamicColorScheme(darkTheme: Boolean): ColorScheme? = null
+
+        override val currentMaterialYouDisplay: StateFlow<Boolean>
+            get() = MutableStateFlow(false)
+    }
+    TemplateResumeKmpTheme(
+        dynamicColorClass = dynamicColor
+    ) {
         Resume(
             resumeModel = ResumeModel(
                 info = InfoModel(
@@ -211,7 +233,8 @@ private fun ResumeAppPreview() {
                 experiences = List(20) { experienceModelMock },
                 skills = List(19) { "Skill" },
                 contact = contactModelMock
-            )
+            ),
+            dynamicColor = dynamicColor
         )
     }
 }

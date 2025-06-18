@@ -15,6 +15,21 @@
   ],
   "experiences": [
     {
+      "company": "Bouygues Telecom",
+      "period": "Jan 2025 - June 2025",
+      "role": "Senior Android Developer",
+      "highlights": [
+        "Ensemble ce Soir application",
+        "Perplexity Application"
+      ],
+      "technologies": [
+        "Compose",
+        "Clean Architecture",
+        "MVVM",
+        "Hilt"
+      ]
+    },
+    {
       "company": "Freelance",
       "period": "Jul 2024 - ",
       "role": "Senior Android Developer",
@@ -37,7 +52,7 @@
     },
     {
       "company": "LVMH",
-      "period": "Nov 2022 - June 2024",
+      "period": "Nov 2022 - Dec 2024",
       "role": "Tech Lead / Senior Android Developer",
       "highlights": [
         "Redesigned app screens using Jetpack Compose",

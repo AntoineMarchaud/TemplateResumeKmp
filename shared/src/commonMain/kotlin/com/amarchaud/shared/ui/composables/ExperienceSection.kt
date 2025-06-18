@@ -92,7 +92,7 @@ fun ExperienceSection(experiences: List<ExperienceModel>, scrollBehavior: TopApp
         }
     }
 
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         canDisplayEnterAnimation = true
     }
     val listState = rememberLazyListState()
