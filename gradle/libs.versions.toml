@@ -5,28 +5,28 @@ android-minSdk = "29"
 android-targetSdk = "36"
 
 # Plugins
-kotlin_version = "2.1.21"
-android_gradle_plugin = "8.7.3"
-kotlinxDatetime_version = "0.6.1"
-kotlinxSerializationJson_version = "1.8.1"
+kotlin_version = "2.2.0"
+android_gradle_plugin = "8.11.0"
+kotlinxDatetime_version = "0.7.1"
+kotlinxSerializationJson_version = "1.9.0"
 
 #Koin
-koin_version = "4.0.4"
+koin_version = "4.1.0"
 
 # Compose
 activity_compose = "1.10.1"
-compose_multiplatform_plugin_version = "1.8.1"
-navigationCompose = "2.9.0-beta01"
+compose_multiplatform_plugin_version = "1.8.2"
+navigationCompose = "2.9.0-beta03"
 
 # Navigation
 lifecycle_version = "2.9.1"
 
 # Others
 coil = "3.2.0"
-statelyCommon = "2.0.6"
-material3Android = "1.8.1"
+statelyCommon = "2.1.0"
+material3Android = "1.8.2"
 materialIcon = "1.7.3"
-uiTooling = "1.8.2"
+uiTooling = "1.8.3"
 
 [plugins]
 
