@@ -29,41 +29,37 @@ kotlin {
     }
 
     sourceSets {
-        val androidMain by getting {
-            dependencies {
-                // common google
-                implementation(compose.preview)
-                implementation(libs.activity.compose)
+        androidMain.dependencies {
+            // common google
+            implementation(compose.preview)
+            implementation(libs.activity.compose)
 
-                implementation(libs.koin.android)
-                implementation(libs.koin.compose)
-            }
+            implementation(libs.koin.android)
+            implementation(libs.koin.compose)
         }
 
-        val commonMain by getting {
-            dependencies {
-                implementation(project(":shared"))
+        commonMain.dependencies {
+            implementation(project(":shared"))
 
-                implementation(libs.coil)
+            implementation(libs.coil)
 
-                implementation(libs.koin.core)
-                implementation(libs.koin.compose)
-                implementation(libs.koin.compose.viewmodel)
-                implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.viewmodel.navigation)
 
-                // common google
-                implementation(libs.navigation.compose.multipatform)
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material)
-                implementation(compose.ui)
-                implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
+            // common google
+            implementation(libs.navigation.compose.multipatform)
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
 
-                implementation(libs.lifecycle.common)
-                implementation(libs.lifecycle.runtime)
-                implementation(libs.lifecycle.viewmodel)
-            }
+            implementation(libs.lifecycle.common)
+            implementation(libs.lifecycle.runtime)
+            implementation(libs.lifecycle.viewmodel)
         }
     }
 }
